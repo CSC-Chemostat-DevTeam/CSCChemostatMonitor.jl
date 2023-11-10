@@ -1,5 +1,9 @@
 module CSCChemostatMonitor
 
-# Write your package code here.
+    import LibSerialPort
+    using Serialization
+    using Dates
+
+    #! include .
 
 end
