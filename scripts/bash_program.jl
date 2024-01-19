@@ -20,6 +20,14 @@ let
     global CH = Chemostat(portname, baudrate)
 
     # Set program
+    # ----
+# set MAIN
+# ----
+# $SD-SET-FILE:MAIN%
+# $SD-SET-LINE:BATCH1%
+# $SD-REMOVE:%
+# $SD-WRITELINE:%
+# $SD-READLINE:%
     # MAIN
     fn = "MAIN"
     sendcmd(CH, "SD-REMOVE", fn)
@@ -62,11 +70,50 @@ end
 
 
 
-## ------------------------------------------------------
-let
-    # Cmd Recieved 15755-2488 $ECHO:BLA%
-    while !sendcmd(CH, "ECHO", "BLA")
-        println("Cmd failed")
-    end
-    nothing
-end
+# ----
+# set PROGRESS
+# ----
+# $SD-SET-FILE:PROGRESS%
+# $SD-SET-LINE:0%
+# $SD-REMOVE:%
+# $SD-WRITELINE:%
+# $SD-READLINE:%
+
+# ----
+# set JUMPAT
+# ----
+# $SD-SET-FILE:BATCH1/JUMPAT%
+# $SD-SET-LINE:1000000000%
+# $SD-REMOVE:%
+# $SD-WRITELINE:%
+# $SD-READLINE:%
+
+# ----
+# set JUMPTO
+# ----
+# $SD-SET-FILE:BATCH1/JUMPTO%
+# $SD-SET-LINE:NOWHERE%
+# $SD-REMOVE:%
+# $SD-WRITELINE:%
+# $SD-READLINE:%
+
+# ----
+# set MKDIR
+# ----
+# $SD-SET-FILE:BATCH1%
+# $SD-SET-LINE:%
+# $SD-REMOVE:%
+# $SD-MKDIR:%
+
+# ----
+# set DATAHEADER
+# ----
+
+# ----
+# set DATA
+# ----
+
+# ----
+# Upload DATA
+# $UPLOADER-SET-FILE:BATCH1/DATA%
+# $UPLOADER-UPLOAD:%
